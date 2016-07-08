@@ -7,19 +7,21 @@ code segment
        call divdw
  divdw:push ax
        push dx
-       push cx
-       mov bx,ss:[sp]
+       push cx 
+       mov si,sp
+       mov bx,ss:[si]
        mov dx,0
-       mov ax,ss:[sp+2]
+       mov ax,ss:[si+2]
        div bx
        push ax
        push dx
-       mov dx,ss:[sp]
-       mov ax,ss:[sp+8]
-       mov bx,ss:[sp+4]
+       mov si,sp
+       mov dx,ss:[si]
+       mov ax,ss:[si+8]
+       mov bx,ss:[si+4]
        div bx
        mov cx,dx
-       mov dx,ss:[sp+2]
+       mov dx,ss:[si+2]
 
        mov ax,4c00h
        int 21h
